@@ -1,0 +1,36 @@
+#스프링
+spring:
+  profiles:
+    active: system #system: 무인증 or siteName : 외부라이브러리 로그인 
+  datasource:
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://211.189.131.26:5432/sewdb4_8100
+    username: postgres
+    password: KSB01+ooEOHrG9rI3r5JEQ== #{splunk}/etc/apps/SecurityWorks4/default/sew4setting.conf 참조
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+
+#마이바티스
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  configuration:
+    lazyLoadingEnabled: true
+    aggressiveLazyLoading: false
+    mapUnderscoreToCamelCase: true
+
+
+#로그설정
+logging:
+  level:
+    org.springframework.web: info
+    kr.co.neighbor21.excuse: debug
+    org.hibernate: debug
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+

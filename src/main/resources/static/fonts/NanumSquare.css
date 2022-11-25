@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+
+@font-face {
+    font-family: 'NanumSquare';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../static/fonts/NanumSquareR.eot); /* IE9 Compat Modes */
+    src:url(../static/fonts/NanumSquareR.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+    url(../static/fonts/NanumSquareR.woff) format('woff'),  /* Modern Browsers */
+    url(../static/fonts/NanumSquareR.ttf) format('truetype'); /* Safari, Android, iOS */
+}
+
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="icon" href="/themes/img/favicon.ico" />
+	
+	 <!-- devExtreme 컴포넌트 JS -->
+	<script src="/js/jquery_3.3.1/jquery-3.3.1.min.js"></script>
+	<script src="/js/devextreme_20.1/js/jszip.min.js"></script>
+	<script src="/js/devextreme_20.1/js/dx.all.js"></script>
+	
+	<!-- CSS -->
+	<link href="/themes/css/devextreme_20.1/dx.common.css" rel="stylesheet" /> <!-- devExtreme 컴포넌트 CSS -->
+	<link href="/themes/css/devextreme_20.1/dx.light.css" rel="stylesheet" /> <!-- devExtreme 컴포넌트 CSS -->
+	<link href="/themes/css/bootstrap/bootstrap.css" rel="stylesheet" /> <!-- bootstrap CSS -->
+	<link href="/themes/css/common.css" rel="stylesheet" /> <!-- 웹 CSS -->
+	
+</head>
+<body>
+<div class="row">
+	<div class="col-12">샘플페이지 : jquery + bootstarp + dxExtreme 컴포넌트</div>
+</div>
+<div class="row">
+	<div class="col-6">
+		<div id="grid1" sytle="height:300px;"></div>
+	</div>
+	<div class="col-6">
+		<div id="chart1" sytle="height:300px;"></div>	
+	</div>
+</div>
+<div class="row">
+	<div class="col-6">
+		<div id="chart2" sytle="height:300px;"></div>
+	</div>
+	<div class="col-6">
+		<div id="text1" sytle="height:300px;"></div>	
+	</div>
+</div>
+
+<script>
+
+	var data1 = [ { col1: 'AA', col2: '22', col3: '33' }, 
+		{ col1: 'BB', col2: '22', col3: '33' },
+		{ col1: 'CC', col2: '22', col3: '33' } 
+		];
+
+	var data2 = [{ day: 'Monday', oranges: 3, }, 
+		{ day: 'Tuesday', oranges: 2, }, 
+		{ day: 'Wednesday', oranges: 3, }, 
+		{ day: 'Thursday', oranges: 4, }, 
+		{ day: 'Friday', oranges: 6, }, 
+		{ day: 'Saturday', oranges: 11, }, 
+		{ day: 'Sunday', oranges: 4, }
+		];
+	
+	var data3 = [{	  year: 1997,		  smp: 263,		  mmp: 226,		  cnstl: 10,		  cluster: 1,		}, 
+		{	  year: 1999,		  smp: 169,		  mmp: 256,		  cnstl: 66,		  cluster: 7,		}, 
+		{	  year: 2001,		  smp: 57,		  mmp: 257,		  cnstl: 143,		  cluster: 43,		}, 
+		{	  year: 2003,		  smp: 0,		  mmp: 163,		  cnstl: 127,		  cluster: 210,		}, 
+		{	  year: 2005,		  smp: 0,		  mmp: 103,		  cnstl: 36,		  cluster: 361,		}, 
+		{	  year: 2007,		  smp: 0,		  mmp: 91,		  cnstl: 3,		  cluster: 406,	}
+		];
+	
+	var data4 = 'Prepare 2013 Marketing Plan: We need to double revenues in 2013 and our marketing strategy is going to be key here. R&D is improving existing products and creating new products so we can deliver great AV equipment to our customers.Robert, please make certain to create a PowerPoint presentation for the members of the executive team.';
+	
+	$(document).ready(function(){
+		
+		//컴포넌트 데모 및 API 문서 사이트
+		//https://js.devexpress.com/Demos/WidgetsGallery/
+		
+		$('#grid1').dxDataGrid({
+			dataSource : data1,
+			paging: {
+				enabled  : true,
+				pageSize : 100
+			},
+			pager: {
+				showPageSizeSelector: true,
+				allowedPageSizes: [50,100,200],
+				showInfo: true,
+				showNavigationButtons: true,
+				visible : true
+			},
+		});
+		
+		$('#chart1').dxChart({
+		    dataSource : data2,
+		    series: {
+		      argumentField: 'day',
+		      valueField: 'oranges',
+		      name: 'My oranges',
+		      type: 'bar',
+		      color: '#ffaa66',
+		    },
+		});
+		
+		$('#chart2').dxChart({
+		    palette: 'violet',
+		    dataSource : data3,
+		    commonSeriesSettings: {
+		      type: 'spline',
+		      argumentField: 'year',
+		    },
+		    commonAxisSettings: {
+		      grid: {
+		        visible: true,
+		      },
+		    },
+		    margin: {
+		      bottom: 20,
+		    },
+		    series: [
+		      { valueField: 'smp', name: 'SMP' },
+		      { valueField: 'mmp', name: 'MMP' },
+		      { valueField: 'cnstl', name: 'Cnstl' },
+		      { valueField: 'cluster', name: 'Cluster' },
+		    ],
+		    tooltip: {
+		      enabled: true,
+		    },
+		    legend: {
+		      verticalAlignment: 'top',
+		      horizontalAlignment: 'right',
+		    },
+		    export: {
+		      enabled: true,
+		    },
+		    argumentAxis: {
+		      label: {
+		        format: {
+		          type: 'decimal',
+		        },
+		      },
+		      allowDecimals: false,
+		      axisDivisionFactor: 60,
+		    },
+		    title: 'Architecture Share Over Time (Count)',
+		  });
+		
+		$('#text1').dxTextArea({
+		    value: data4,
+		    height: '100%',
+		    valueChangeEvent: 'change',
+		    onValueChanged(data) {
+		      disabledTextArea.option('value', data.value);
+		    },
+		  })
+		
+	});
+
+
+</script>
+
+</body>
+
+</html>
