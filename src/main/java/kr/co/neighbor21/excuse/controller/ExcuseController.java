@@ -14,7 +14,7 @@ public class ExcuseController {
 	public String home(Model model, HttpSession session) throws Exception {
 
 		
-		return "excuse/excuse_home";
+		return "excuse/excuse_home";//1231231
 	}
 	
 }
