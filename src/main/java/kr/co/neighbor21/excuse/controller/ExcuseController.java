@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ExcuseController {
 	
-	@GetMapping("/home")//main 브랜치 테스트2
+	@GetMapping("/home")//main 브랜치 테스트4444
 	public String home(Model model, HttpSession session) throws Exception {
 
 		
